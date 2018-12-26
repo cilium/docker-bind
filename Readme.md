@@ -8,7 +8,7 @@ using the shared folder /data.
 **How to run it?**
 
 ```
-docker run --rm -v /data/:/data/ -p 53:53/udp -ti eloycoto/bind
+docker run --rm -v /data/:/data/ -p 53:53/udp -ti cilium/docker-bind
 ```
 
 Any file that is on /data/ folder will be copied to `/etc/bind/` so only new
