@@ -1,7 +1,12 @@
 FROM ubuntu:18.04
 
 MAINTAINER Eloy Coto <eloy.coto@gmail.com>
-RUN apt-get update; apt-get install -y bind9
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+        bind9 \
+    && apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY docker-entrypoint.sh /
 
